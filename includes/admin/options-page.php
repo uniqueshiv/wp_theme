@@ -43,7 +43,7 @@ $theme_opts         =get_option('spnin_opts');
             </div>
 
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Logo Image" name="spnin_inputimage" >
+              <input type="text" class="form-control" placeholder="Logo Image" name="spnin_inputlogoimage" value="<?php echo $theme_opts['logo_img']; ?>" >
               <span class="input-group-btn">
                   <button class="btn btn-primary" type="button" id="spnin_uploadlogoimage"><?php _e('Upload','spnin');?></button>
               </span>

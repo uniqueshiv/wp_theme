@@ -1,3 +1,7 @@
+<?php
+$theme_opts= get_option('spnin_opts');
+//print_r($theme_opts);
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -37,7 +41,20 @@
         <div class="container">
           <!-- Navbar Brand -->
           <div class="navbar-header d-flex align-items-center justify-content-between">
-            <!-- Navbar Brand --><a href="<?php echo home_url();?>" class="navbar-brand">Testing Blog</a>
+            <!-- Navbar Brand -->
+            <?php
+            if($theme_opts['logo_type']==1){
+              ?>
+                    <a href="<?php echo home_url();?>" class="navbar-brand"><?php echo bloginfo('name');?></a>
+              <?php
+            }else{
+              ?>
+                <a href="<?php echo home_url();?>" class="navbar-brand"><img src="<?php echo $theme_opts['logo_img']; ?>" class="img img-responsive" width="50" height=""></a>
+              <?php
+            }
+             ?>
+
+            <!-- <a href="<?php echo home_url();?>" class="navbar-brand">Testing Blog</a> -->
             <!-- Toggle Button-->
             <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarcollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span></span><span></span><span></span></button>
           </div>
@@ -58,10 +75,24 @@
               'container'                                => "ul",
               'menu_class'                               =>"navbar-nav ml-auto"
 
-
             )); ?>
             <div class="navbar-text"><a href="#" class="search-btn"><i class="icon-search-1"></i></a></div>
-            <ul class="langs navbar-text"><a href="#" class="active">EN</a><span>           </span><a href="#">ES</a></ul>
+            <ul class="langs navbar-text">
+              <?php if(!empty($theme_opts['twitter'])){?>
+                <a href="https://twitter.com/<?php echo $theme_opts['twitter'];?>"><i class="fa fa-twitter"></i></a>
+             <?php  } ?>  <span></span>
+             <?php if(!empty($theme_opts['facebook'])){?>
+               <a href="https://facebook.com/<?php echo $theme_opts['facebook'];?>"><i class="fa fa-facebook"></i></a>
+            <?php  } ?>  <span></span>
+            <?php if(!empty($theme_opts['youtube'])){?>
+              <a href="https://youtube.com/<?php echo $theme_opts['youtube'];?>"><i class="fa fa-youtube"></i></a>
+           <?php  } ?>
+              <!-- <a href="#" class="active">EN</a>
+              <span></span>
+              <a href="#">ES</a> -->
+
+
+            </ul>
           </div>
         </div>
       </nav>

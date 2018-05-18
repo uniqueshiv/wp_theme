@@ -13,8 +13,9 @@ $opts               = get_option('spnin_opts');
 $opts['twitter']    = sanitize_text_field($_POST['spnin_inputtwitter']);
 $opts['facebook']    = sanitize_text_field($_POST['spnin_inputfacebook']);
 $opts['youtube']    = sanitize_text_field($_POST['spnin_inputyoutube']);
-$opts['logo_type']    = sanitize_text_field($_POST['spnin_inputlogotype']);
+$opts['logo_type']    = esc_url_raw($_POST['spnin_inputlogotype']);
 $opts['footer']    = sanitize_text_field($_POST['spnin_inputfooter']);
+$opts['logo_img'] =esc_url_raw($_POST['spnin_inputlogoimage']);
 
 update_option('spnin_opts',$opts);
 wp_redirect(admin_url('admin.php?page=spnin_theme_opts&status=1'));
